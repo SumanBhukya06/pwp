@@ -9,7 +9,7 @@ class I(H):
     def m2(self):
         print(self.a,self.b)
 
-class J(I):
+class J(H):
     m,n=10,20
     def m1(self):
         print(self.m,self.n)
