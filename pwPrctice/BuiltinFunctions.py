@@ -28,19 +28,25 @@ def test_login(page:Page):
     text=page.locator("a#nameofuser")
     expect(text).to_be_visible()
     page.wait_for_timeout(3000)
-    # titles = page.locator("h4.card-title").all_inner_texts()
-    titles = page.locator("h4.card-title")
+    titles = page.locator("h4.card-title").all_inner_texts()
+    #titles = page.locator("h4.card-title")
     # for t in titles:
     #     print(t)
 
-    # prices=page.locator("div.card-block>h5").all_inner_texts()
-    prices = page.locator("div.card-block>h5")
+    prices=page.locator("div.card-block>h5").all_inner_texts()
+    #prices = page.locator("div.card-block>h5")
     # for p in prices:
     #     print(p)
-    count=titles.count()
-    for i in range(count):
-        t=titles.nth(i).inner_text()
-        p=prices.nth(i).inner_text()
+
+    #using nth(i)
+    # count=titles.count()
+    # for i in range(count):
+    #     t=titles.nth(i).inner_text()
+    #     p=prices.nth(i).inner_text()
+    #     print(f"{t},{p}")
+
+    #using zip()
+    for t,p in zip(titles,prices):
         print(f"{t},{p}")
 
 
