@@ -20,7 +20,8 @@ def test_built(page:Page):
 def test_login(page:Page):
     page.goto("https://www.demoblaze.com/")
     #click on login
-    page.locator("a#login2").click()
+    login=page.locator("a#login2")
+    login.click()
     page.locator("input#loginusername").fill("Joy007")
     page.locator("input#loginpassword").fill("joy123")
     page.locator("button[onclick='logIn()']").click()
@@ -43,7 +44,7 @@ def test_login(page:Page):
     for i in range(count):
         t=titles.nth(i).inner_text()
         #p=prices.nth(i).inner_text()
-        #print(f"{t},{p}")
+        #print(f"{t},{p}")#dictionary format
         print(t)
         if t=="Samsung galaxy s6":
             titles.nth(i).click()
@@ -56,7 +57,7 @@ def test_login(page:Page):
     page.on("dialog", lambda dialog: dialog.accept())  # handle alert
     page.locator("a#cartur").click()
     page.locator("button[data-target='#orderModal']").click()
-    page.wait_for_timeout(5000)
+    page.wait_for_timeout(2000)
 
     #place order
     page.locator("input#name").fill("Joy")
@@ -74,6 +75,10 @@ def test_login(page:Page):
     #page logo
     page_logo=page.locator("a#nava")
     expect(page_logo).to_be_visible()
+
+    #logout
+    page.locator("a[onclick='logOut()']").click()
+    expect(login).to_be_visible()
 
 
 
